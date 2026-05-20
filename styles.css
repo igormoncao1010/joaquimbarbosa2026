@@ -234,6 +234,10 @@ main,
   text-transform: uppercase;
 }
 
+.hero-kicker {
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+}
+
 h1,
 h2,
 h3,
