@@ -48,7 +48,7 @@ body.menu-open {
 .site-header {
   position: fixed;
   top: 18px;
-  left: calc(50% - 20px);
+  left: calc(50% - 44px);
   z-index: 10;
   display: flex;
   width: min(1040px, calc(100vw - 48px));
