@@ -25,6 +25,13 @@ const galleryNext = document.querySelector(".gallery-next");
 const careerButtons = document.querySelectorAll(".career-point");
 const careerTitle = document.querySelector("#career-title");
 const careerText = document.querySelector("#career-text");
+const supportCard = document.querySelector("#support-card");
+const cardName = document.querySelector("#card-name");
+const cardCity = document.querySelector("#card-city");
+const cardPhotoInput = document.querySelector("#card-photo");
+const cardStyleInputs = document.querySelectorAll('input[name="card-style"]');
+const downloadCard = document.querySelector("#download-card");
+const cardStatus = document.querySelector("#card-status");
 
 const timelineContent = {
   escuta: {
@@ -109,6 +116,8 @@ const careerContent = {
 };
 
 let currentGalleryIndex = 0;
+let cardLogo = null;
+let cardPhoto = null;
 
 const pointer = {
   x: window.innerWidth / 2,
@@ -207,6 +216,159 @@ function hideHeroReveal(event) {
   heroReveal.style.setProperty("--reveal-size", "0px");
 }
 
+function getCardStyle() {
+  const selected = document.querySelector('input[name="card-style"]:checked');
+  return selected?.value || "brasil";
+}
+
+function drawWrappedText(context, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(" ");
+  let line = "";
+  let currentY = y;
+
+  words.forEach((word, index) => {
+    const testLine = line ? `${line} ${word}` : word;
+    if (context.measureText(testLine).width > maxWidth && line) {
+      context.fillText(line, x, currentY);
+      line = word;
+      currentY += lineHeight;
+    } else {
+      line = testLine;
+    }
+
+    if (index === words.length - 1) {
+      context.fillText(line, x, currentY);
+    }
+  });
+
+  return currentY;
+}
+
+function drawCoverImage(context, image, x, y, width, height) {
+  const imageRatio = image.naturalWidth / image.naturalHeight;
+  const targetRatio = width / height;
+  let sourceWidth = image.naturalWidth;
+  let sourceHeight = image.naturalHeight;
+  let sourceX = 0;
+  let sourceY = 0;
+
+  if (imageRatio > targetRatio) {
+    sourceWidth = image.naturalHeight * targetRatio;
+    sourceX = (image.naturalWidth - sourceWidth) / 2;
+  } else {
+    sourceHeight = image.naturalWidth / targetRatio;
+    sourceY = (image.naturalHeight - sourceHeight) / 2;
+  }
+
+  context.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, width, height);
+}
+
+function roundedRectangle(context, x, y, width, height, radius) {
+  context.beginPath();
+  context.moveTo(x + radius, y);
+  context.lineTo(x + width - radius, y);
+  context.quadraticCurveTo(x + width, y, x + width, y + radius);
+  context.lineTo(x + width, y + height - radius);
+  context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  context.lineTo(x + radius, y + height);
+  context.quadraticCurveTo(x, y + height, x, y + height - radius);
+  context.lineTo(x, y + radius);
+  context.quadraticCurveTo(x, y, x + radius, y);
+  context.closePath();
+}
+
+function drawSupportCard() {
+  if (!supportCard) return;
+
+  const context = supportCard.getContext("2d");
+  const width = supportCard.width;
+  const height = supportCard.height;
+  const name = cardName?.value.trim() || "Seu nome";
+  const city = cardCity?.value.trim() || "Sua cidade";
+  const style = getCardStyle();
+  const styles = {
+    brasil: ["#006b44", "#ffcf2e", "#0b4ea2"],
+    noite: ["#071926", "#123950", "#ffcf2e"],
+    solar: ["#ffcf2e", "#fff8d6", "#006b44"]
+  };
+  const palette = styles[style] || styles.brasil;
+
+  const gradient = context.createLinearGradient(0, 0, width, height);
+  gradient.addColorStop(0, palette[0]);
+  gradient.addColorStop(0.55, palette[1]);
+  gradient.addColorStop(1, palette[2]);
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, width, height);
+
+  context.fillStyle = "rgba(7,25,38,0.58)";
+  context.fillRect(0, 0, width, height);
+
+  if (cardPhoto?.complete) {
+    context.save();
+    roundedRectangle(context, 650, 610, 330, 330, 36);
+    context.clip();
+    drawCoverImage(context, cardPhoto, 650, 610, 330, 330);
+    context.restore();
+
+    context.strokeStyle = "#ffcf2e";
+    context.lineWidth = 10;
+    roundedRectangle(context, 650, 610, 330, 330, 36);
+    context.stroke();
+  }
+
+  context.strokeStyle = "rgba(255,255,255,0.16)";
+  context.lineWidth = 4;
+  for (let x = -width; x < width * 2; x += 86) {
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x + width, height);
+    context.stroke();
+  }
+
+  context.fillStyle = "rgba(255,207,46,0.9)";
+  context.beginPath();
+  context.arc(width - 120, 120, 160, 0, Math.PI * 2);
+  context.fill();
+
+  context.fillStyle = "#ffffff";
+  context.textAlign = "left";
+  context.textBaseline = "alphabetic";
+  context.font = "900 52px Arial";
+  context.fillText("EU APOIO", 86, 150);
+
+  if (cardLogo?.complete) {
+    const logoWidth = 640;
+    const logoHeight = (cardLogo.naturalHeight / cardLogo.naturalWidth) * logoWidth;
+    context.drawImage(cardLogo, 80, 230, logoWidth, logoHeight);
+  } else {
+    context.font = "900 96px Arial";
+    context.fillText("JOAQUIM BARBOSA", 80, 330);
+  }
+
+  context.fillStyle = "#ffcf2e";
+  context.font = "900 56px Arial";
+  drawWrappedText(context, "PELO BEM DO BRASIL", 86, 520, 780, 64);
+
+  context.fillStyle = "#ffffff";
+  context.font = "900 78px Arial";
+  drawWrappedText(context, name.toUpperCase(), 86, 810, 880, 86);
+
+  context.fillStyle = "rgba(255,255,255,0.82)";
+  context.font = "500 42px Arial";
+  context.fillText(city, 86, 930);
+
+  context.fillStyle = "rgba(255,255,255,0.92)";
+  context.font = "900 34px Arial";
+  context.fillText("FRENTE NEGRA BRASILEIRA", 86, 1170);
+
+  context.fillStyle = "rgba(255,255,255,0.72)";
+  context.font = "500 28px Arial";
+  context.fillText("pró Joaquim Barbosa", 86, 1210);
+
+  context.fillStyle = "#ffcf2e";
+  context.fillRect(86, 1244, 300, 12);
+}
+
 menuButton.addEventListener("click", () => {
   const isOpen = document.body.classList.toggle("menu-open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
@@ -278,6 +440,51 @@ careerButtons.forEach((button) => {
   });
 });
 
+cardName?.addEventListener("input", drawSupportCard);
+cardCity?.addEventListener("input", drawSupportCard);
+cardStyleInputs.forEach((input) => input.addEventListener("change", drawSupportCard));
+
+cardPhotoInput?.addEventListener("change", () => {
+  const file = cardPhotoInput.files?.[0];
+
+  if (!file) {
+    cardPhoto = null;
+    if (cardStatus) cardStatus.textContent = "O card será baixado como PNG.";
+    drawSupportCard();
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    cardPhoto = new Image();
+    cardPhoto.onload = () => {
+      if (cardStatus) cardStatus.textContent = "Foto adicionada ao card.";
+      drawSupportCard();
+    };
+    cardPhoto.onerror = () => {
+      cardPhoto = null;
+      if (cardStatus) cardStatus.textContent = "Não foi possível carregar essa foto.";
+      drawSupportCard();
+    };
+    cardPhoto.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+downloadCard?.addEventListener("click", () => {
+  if (!supportCard) return;
+  drawSupportCard();
+  const link = document.createElement("a");
+  link.download = "card-apoio-joaquim-barbosa.png";
+  try {
+    link.href = supportCard.toDataURL("image/png");
+    link.click();
+    if (cardStatus) cardStatus.textContent = "Download iniciado.";
+  } catch (error) {
+    if (cardStatus) cardStatus.textContent = "Não foi possível baixar o card. Tente trocar a foto enviada.";
+  }
+});
+
 document.querySelectorAll(".magnetic").forEach((item) => {
   item.addEventListener("mousemove", (event) => {
     const rect = item.getBoundingClientRect();
@@ -320,4 +527,11 @@ window.addEventListener("resize", resizeCanvas);
 
 resizeCanvas();
 drawParticles();
+if (supportCard) {
+  cardLogo = new Image();
+  cardLogo.onload = drawSupportCard;
+  cardLogo.onerror = drawSupportCard;
+  cardLogo.src = "logo.svg";
+  drawSupportCard();
+}
 updateScrollEffects();

@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joaquim Barbosa | Brasil de Justiça</title>
-    <link rel="icon" type="image/svg+xml" href="icone.svg" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -12,21 +11,17 @@
 
     <header class="site-header" data-reveal>
       <a class="brand" href="#inicio" aria-label="Joaquim Barbosa - início">
-        <img class="brand-logo" src="logo.png" alt="" />
         <span class="brand-mark">JB</span>
         <span>Joaquim Barbosa</span>
       </a>
       <nav class="nav-links" aria-label="Navegação principal">
         <a href="#visao">Visão</a>
-        <a href="#trajetoria">Trajetória</a>
+        <a href="#apoio">Apoio</a>
         <a href="#movimento">Movimento</a>
-        <a href="#midia">Mídia</a>
-        <a href="#galeria">Galeria</a>
         <a href="#agenda">Agenda</a>
-        <a href="contribuir.html">Contribuir</a>
+        <a href="#participar">Participar</a>
       </nav>
       <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false">
-        <img class="menu-logo" src="logo.png" alt="" />
         <span></span>
         <span></span>
       </button>
@@ -81,77 +76,69 @@
         </div>
       </section>
 
-      <section class="political-force" id="trajetoria">
-        <div class="force-heading" data-reveal>
-          <div class="section-label">Movimentação política</div>
-          <h2>Um nome que volta ao centro da corrida presidencial.</h2>
+      <section class="support-front" id="apoio">
+        <div class="support-copy" data-reveal>
+          <div class="section-label">Frente de apoio</div>
+          <h2>Frente Negra Brasileira pró Joaquim Barbosa</h2>
           <p>
-            A movimentação recente em torno de Joaquim Barbosa combina articulação partidária, reconhecimento público e uma biografia marcada por independência institucional.
+            Uma frente popular, jovem e democrática em apoio a uma trajetória pública marcada por justiça, independência e representação histórica.
+          </p>
+          <div class="support-actions">
+            <a class="button primary magnetic" href="#participar">Somar com a frente</a>
+            <a class="button support-ghost" href="#movimento">Ver eixos</a>
+          </div>
+        </div>
+
+        <div class="support-image" data-reveal>
+          <img src="pessoas.png" alt="Pessoas apoiando a Frente Negra Brasileira pró Joaquim Barbosa" />
+        </div>
+      </section>
+
+      <section class="card-generator" id="card-apoio">
+        <div class="generator-copy" data-reveal>
+          <div class="section-label">Card de apoio</div>
+          <h2>Crie seu card para redes sociais.</h2>
+          <p>
+            Escreva seu nome e cidade, escolha um estilo e gere uma imagem pronta para compartilhar no Instagram, WhatsApp ou X.
           </p>
         </div>
 
-        <div class="force-grid">
-          <article class="force-card lead" data-reveal>
-            <span>01</span>
-            <h3>O DC colocou seu nome no tabuleiro nacional</h3>
-            <p>
-              Em maio de 2026, o Democracia Cristã confirmou Joaquim Barbosa como pré-candidato à Presidência, deslocando a estratégia que vinha girando em torno de Aldo Rebelo. A mudança recolocou Barbosa no debate nacional e abriu disputa interna dentro da legenda.
-            </p>
-          </article>
-          <article class="force-card" data-reveal>
-            <span>02</span>
-            <h3>Uma biografia difícil de ignorar</h3>
-            <p>
-              Ex-ministro e ex-presidente do Supremo Tribunal Federal, Barbosa carrega uma imagem pública associada a rigor técnico, combate à corrupção e autonomia diante de pressões políticas.
-            </p>
-          </article>
-          <article class="force-card" data-reveal>
-            <span>03</span>
-            <h3>Representação histórica</h3>
-            <p>
-              Sua chegada à presidência do STF marcou a história do Judiciário brasileiro. Para muitos eleitores, sua trajetória simboliza mérito, superação e presença negra em espaços de poder.
-            </p>
-          </article>
-        </div>
+        <div class="generator-workspace" data-reveal>
+          <form class="card-form">
+            <label>
+              <span>Nome</span>
+              <input id="card-name" type="text" maxlength="28" placeholder="Seu nome" value="Ana Paula" />
+            </label>
+            <label>
+              <span>Cidade</span>
+              <input id="card-city" type="text" maxlength="32" placeholder="Sua cidade" value="Salvador, BA" />
+            </label>
+            <label>
+              <span>Foto</span>
+              <input id="card-photo" type="file" accept="image/*" />
+            </label>
+            <fieldset>
+              <legend>Estilo</legend>
+              <label class="style-option">
+                <input type="radio" name="card-style" value="brasil" checked />
+                <span>Brasil</span>
+              </label>
+              <label class="style-option">
+                <input type="radio" name="card-style" value="noite" />
+                <span>Noite</span>
+              </label>
+              <label class="style-option">
+                <input type="radio" name="card-style" value="solar" />
+                <span>Solar</span>
+              </label>
+            </fieldset>
+            <button class="button primary" id="download-card" type="button">Baixar card PNG</button>
+            <p class="card-hint" id="card-status" role="status" aria-live="polite">O card será baixado como PNG.</p>
+          </form>
 
-        <div class="career-panel" data-reveal>
-          <div class="career-copy">
-            <h3>O que fortalece a imagem pública de Barbosa</h3>
-            <p>
-              A força política do seu nome nasce de uma carreira construída fora do marketing tradicional: Ministério Público Federal, vida acadêmica, atuação no Supremo e protagonismo em julgamentos de enorme repercussão.
-            </p>
+          <div class="card-preview-wrap" aria-label="Prévia do card de apoio">
+            <canvas id="support-card" width="1080" height="1350"></canvas>
           </div>
-          <div class="career-points">
-            <button class="career-point active" type="button" data-career="stf">
-              <strong>STF</strong>
-              <span>Ministro entre 2003 e 2014</span>
-            </button>
-            <button class="career-point" type="button" data-career="mensalao">
-              <strong>Mensalão</strong>
-              <span>Relator da Ação Penal 470</span>
-            </button>
-            <button class="career-point" type="button" data-career="presidencia">
-              <strong>Presidência</strong>
-              <span>Primeiro presidente negro do STF</span>
-            </button>
-            <button class="career-point" type="button" data-career="formacao">
-              <strong>Formação</strong>
-              <span>Direito público e carreira acadêmica</span>
-            </button>
-          </div>
-          <div class="career-detail" role="status" aria-live="polite">
-            <span id="career-title">STF</span>
-            <p id="career-text">
-              Nomeado para o Supremo Tribunal Federal em 2003, construiu uma atuação reconhecida pela independência e pelo peso técnico em temas de grande repercussão nacional.
-            </p>
-          </div>
-        </div>
-
-        <div class="force-sources" data-reveal>
-          <a href="https://noticias.uol.com.br/politica/ultimas-noticias/2026/05/16/presidente-dc-joaquim-barbosa.ghtm" target="_blank" rel="noreferrer">UOL: DC confirma pré-candidatura</a>
-          <a href="https://www1.folha.uol.com.br/amp/colunas/painel/2026/05/dc-oficializa-nome-de-joaquim-barbosa-como-presidenciavel-e-consolida-racha-no-partido.shtml" target="_blank" rel="noreferrer">Folha: movimentação no partido</a>
-          <a href="https://noticias.uol.com.br/ultimas-noticias/afp/2012/10/10/joaquim-barbosa-eleito-o-primeiro-presidente-negro-do-stf.htm" target="_blank" rel="noreferrer">UOL/AFP: presidente negro do STF</a>
-          <a href="https://memoria.ebc.com.br/noticias/brasil/2012/12/retrospectiva-2012-joaquim-barbosa-assume-a-presidencia-do-supremo-tribunal" target="_blank" rel="noreferrer">EBC: presidência do Supremo</a>
         </div>
       </section>
 
@@ -194,98 +181,6 @@
         </div>
       </section>
 
-      <section class="media-watch" id="midia">
-        <div class="media-heading" data-reveal>
-          <div class="section-label">Na mídia</div>
-          <h2>O que estão falando dele agora.</h2>
-          <p>
-            Atualizado em 20 de maio de 2026 com notícias recentes encontradas em veículos nacionais.
-          </p>
-        </div>
-        <div class="news-grid">
-          <article class="news-card" data-reveal>
-            <span class="news-source">VEJA · 19/05/2026</span>
-            <h3>Aldo Rebelo ameaça acionar o próprio partido</h3>
-            <p>
-              A reportagem afirma que Aldo Rebelo cogita ir à Justiça para tentar manter sua pré-candidatura pelo DC e barrar a opção por Joaquim Barbosa.
-            </p>
-            <a href="https://veja.abril.com.br/brasil/aldo-rebelo-ameaca-processar-o-proprio-partido-para-barrar-candidatura-de-joaquim-barbosa/" target="_blank" rel="noreferrer">Ler notícia</a>
-          </article>
-          <article class="news-card feature" data-reveal>
-            <span class="news-source">SBT News · 18/05/2026</span>
-            <h3>DC apresenta nome de Barbosa em reunião com a PF</h3>
-            <p>
-              Segundo o SBT News, o Democracia Cristã levou o nome de Joaquim Barbosa à reunião sobre proteção de pré-candidatos à Presidência.
-            </p>
-            <a href="https://sbtnews.sbt.com.br/noticia/politica/democracia-crista-apresenta-nome-de-joaquim-barbosa-em-reuniao-com-pf-sobre-protecao-de-pre-candidatos-a-presidencia" target="_blank" rel="noreferrer">Ler notícia</a>
-          </article>
-          <article class="news-card" data-reveal>
-            <span class="news-source">SBT News · 16/05/2026</span>
-            <h3>Pré-candidatura é anunciada pelo Democracia Cristã</h3>
-            <p>
-              O veículo publicou que o DC anunciou oficialmente Joaquim Barbosa como pré-candidato à Presidência da República.
-            </p>
-            <a href="https://sbtnews.sbt.com.br/noticia/politica/joaquim-barbosa-e-anunciado-pre-candidato-a-presidencia-da-republica" target="_blank" rel="noreferrer">Ler notícia</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="photo-gallery" id="galeria">
-        <div class="gallery-heading" data-reveal>
-          <div class="section-label">Galeria</div>
-          <h2>Imagens de uma trajetória pública.</h2>
-          <p>
-            Selecione uma foto, navegue pelas setas ou use as miniaturas para mudar a imagem em destaque.
-          </p>
-        </div>
-
-        <div class="gallery-stage" data-reveal>
-          <button class="gallery-nav gallery-prev" type="button" aria-label="Foto anterior">‹</button>
-          <figure class="gallery-feature">
-            <img
-              id="gallery-main"
-              src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa%20em%202012.JPG"
-              alt="Joaquim Barbosa em 2012"
-            />
-            <figcaption>
-              <strong id="gallery-title">Joaquim Barbosa em 2012</strong>
-              <span id="gallery-credit">Fonte: Wikimedia Commons / Agência Brasil</span>
-            </figcaption>
-          </figure>
-          <button class="gallery-nav gallery-next" type="button" aria-label="Próxima foto">›</button>
-        </div>
-
-        <div class="gallery-thumbs" aria-label="Miniaturas da galeria">
-          <button class="gallery-thumb active" type="button" data-gallery-index="0" aria-label="Mostrar Joaquim Barbosa em 2012">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa%20em%202012.JPG" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="1" aria-label="Mostrar Joaquim Barbosa no STF">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20barbosa%20stf.jpg" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="2" aria-label="Mostrar Joaquim Barbosa em sua posse">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa%20em%20sua%20posse%2C%207%20de%20maio%20de%202003.jpg" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="3" aria-label="Mostrar Joaquim Barbosa na Universidade de Brasília">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa%20na%20Universidade%20de%20Bras%C3%ADlia.jpg" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="4" aria-label="Mostrar foto 2 na Universidade de Brasília">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa%20na%20Universidade%20de%20Bras%C3%ADlia%20foto%202.jpg" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="5" aria-label="Mostrar julgamento do mensalão 2012">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa%20durante%20o%20julgamento%20do%20mensal%C3%A3o%202012%20%28cropped%29.JPG" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="6" aria-label="Mostrar Joaquim Barbosa em 21 de novembro de 2012">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Joaquim%20Barbosa-21-11-2012-edit.jpg" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="7" aria-label="Mostrar Joaquim Barbosa em gabinete">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ministro%20Joaquim%20Barbosa%20%C3%A9%20recebido%20no%20gabinete%20do%20vice-presidente%20Michel%20Temer%20%28cropped%29.jpg" alt="" />
-          </button>
-          <button class="gallery-thumb" type="button" data-gallery-index="8" aria-label="Mostrar O ministro do STF Joaquim Barbosa">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/O%20ministro%20do%20STF%20Joaquim%20Barbosa.jpg" alt="" />
-          </button>
-        </div>
-      </section>
-
       <section class="timeline" id="agenda">
         <div class="section-label" data-reveal>Agenda pública</div>
         <h2 data-reveal>Compromissos que viram presença.</h2>
@@ -310,6 +205,11 @@
       </section>
 
       <section class="join" id="participar">
+        <div class="join-art" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div class="join-content" data-reveal>
           <div class="section-label">Participação</div>
           <h2>Uma campanha se mede pela coragem de abrir espaço.</h2>
@@ -332,7 +232,6 @@
               </select>
             </label>
             <button class="button primary magnetic" type="submit">Enviar intenção</button>
-            <a class="button light-link" href="contribuir.html">Ir para central de contribuição</a>
             <p class="form-note" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -340,7 +239,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Material conceitual de campanha. Foto: Supremo Tribunal Federal via Wikimedia Commons.</p>
+      <p>Material conceitual de campanha. Feito para debate cívico, inclusão e participação democrática.</p>
       <a href="#inicio">Voltar ao topo</a>
     </footer>
 
