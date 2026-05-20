@@ -379,8 +379,31 @@ h3 {
 
 .statement-inner {
   position: relative;
-  width: min(880px, 100%);
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.78fr);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: center;
   margin-top: -30px;
+}
+
+.statement-copy {
+  max-width: 820px;
+}
+
+.statement-video {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(7, 25, 38, 0.16);
+  background: var(--ink);
+  box-shadow: 0 28px 70px rgba(7, 25, 38, 0.18);
+}
+
+.statement-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 
 .statement-inner p,
@@ -1088,6 +1111,7 @@ h3 {
   .pillars,
   .news-grid,
   .gallery-thumbs,
+  .statement-inner,
   .force-grid,
   .career-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1095,6 +1119,7 @@ h3 {
 
   .pillar-card:last-child,
   .news-card:last-child,
+  .statement-video,
   .force-card.lead,
   .career-detail {
     grid-column: 1 / -1;
@@ -1194,6 +1219,7 @@ h3 {
   .movement,
   .join,
   .news-grid,
+  .statement-inner,
   .force-grid,
   .career-panel,
   .gallery-thumbs,
@@ -1203,6 +1229,7 @@ h3 {
 
   .pillar-card:last-child,
   .news-card:last-child,
+  .statement-video,
   .force-card.lead,
   .career-detail {
     grid-column: auto;
