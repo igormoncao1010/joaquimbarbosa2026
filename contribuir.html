@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contribuir | Joaquim Barbosa</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="contribute-page">
+    <canvas id="grain-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header is-static" data-reveal>
+      <a class="brand" href="index.html" aria-label="Voltar ao site Joaquim Barbosa">
+        <img class="brand-logo" src="logo.png" alt="" />
+        <span class="brand-mark">JB</span>
+        <span>Joaquim Barbosa</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="index.html#visao">Visão</a>
+        <a href="index.html#movimento">Movimento</a>
+        <a href="index.html#midia">Mídia</a>
+        <a href="index.html#agenda">Agenda</a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <img class="menu-logo" src="logo.png" alt="" />
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="contribute-hero">
+        <div class="contribute-copy" data-reveal>
+          <p class="kicker">Central de contribuição</p>
+          <h1>Contribua com o movimento</h1>
+          <p>
+            Esta área está pronta para você integrar doação, voluntariado, CRM ou automações de campanha quando quiser.
+          </p>
+        </div>
+
+        <form class="signup-form contribute-form" data-reveal>
+          <label>
+            <span>Nome</span>
+            <input type="text" name="nome" placeholder="Seu nome" autocomplete="name" />
+          </label>
+          <label>
+            <span>E-mail</span>
+            <input type="email" name="email" placeholder="voce@email.com" autocomplete="email" />
+          </label>
+          <label>
+            <span>Tipo de contribuição</span>
+            <select name="contribuicao">
+              <option>Quero ser voluntário</option>
+              <option>Quero contribuir financeiramente</option>
+              <option>Quero organizar um encontro</option>
+              <option>Quero ajudar com comunicação</option>
+            </select>
+          </label>
+          <label>
+            <span>Mensagem</span>
+            <textarea name="mensagem" placeholder="Conte rapidamente como você quer participar"></textarea>
+          </label>
+          <button class="button primary magnetic" type="submit">Registrar contribuição</button>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Placeholder pronto para integração posterior com plataforma de campanha.</p>
+      <a href="index.html">Voltar ao site</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
