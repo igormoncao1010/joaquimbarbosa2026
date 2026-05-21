@@ -507,13 +507,15 @@ if (hero && heroReveal) {
   });
 }
 
-form.addEventListener("submit", (event) => {
+form?.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(form);
   const name = data.get("nome")?.toString().trim();
-  formNote.textContent = name
-    ? `${name}, sua intenção foi registrada neste protótipo.`
-    : "Sua intenção foi registrada neste protótipo.";
+  if (formNote) {
+    formNote.textContent = name
+      ? `${name}, sua intenção foi registrada neste protótipo.`
+      : "Sua intenção foi registrada neste protótipo.";
+  }
   form.reset();
 });
 
