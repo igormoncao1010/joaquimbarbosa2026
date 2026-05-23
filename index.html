@@ -8,6 +8,14 @@
   </head>
   <body>
     <canvas id="grain-canvas" aria-hidden="true"></canvas>
+    <svg class="svg-filters" aria-hidden="true" focusable="false">
+      <filter id="flag-wave">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="2" seed="7">
+          <animate attributeName="baseFrequency" dur="7s" values="0.012 0.045;0.018 0.035;0.012 0.045" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
 
     <header class="site-header" data-reveal>
       <a class="brand" href="#inicio" aria-label="Joaquim Barbosa - início">
@@ -17,6 +25,7 @@
       <nav class="nav-links" aria-label="Navegação principal">
         <a href="#visao">Visão</a>
         <a href="#apoio">Apoio</a>
+        <a href="#base-politica">Base</a>
         <a href="#movimento">Movimento</a>
         <a href="#agenda">Agenda</a>
         <a href="#participar">Participar</a>
@@ -30,8 +39,9 @@
     <main id="inicio">
       <section class="hero section-pin">
         <div class="hero-image-reveal" aria-hidden="true">
-          <div class="hero-image hero-image-top"></div>
-          <div class="hero-image hero-image-bottom"></div>
+          <div class="hero-image hero-image-wave"></div>
+          <div class="hero-image hero-image-static"></div>
+          <div class="hero-image hero-image-hover"></div>
         </div>
 
         <div class="hero-content" data-reveal>
@@ -74,12 +84,15 @@
             <video src="video.mp4" controls playsinline preload="metadata"></video>
           </div>
         </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
       </section>
 
       <section class="support-front" id="apoio">
         <div class="support-copy" data-reveal>
           <div class="section-label">Frente de apoio</div>
-          <h2>Frente Negra Brasileira pró Joaquim Barbosa</h2>
+          <h2>Frente Negra Brasileira pro Joaquim Barbosa</h2>
           <p>
             Uma frente popular, jovem e democrática em apoio a uma trajetória pública marcada por justiça, independência e representação histórica.
           </p>
@@ -90,7 +103,133 @@
         </div>
 
         <div class="support-image" data-reveal>
-          <img src="pessoas.png" alt="Pessoas apoiando a Frente Negra Brasileira pró Joaquim Barbosa" />
+          <img src="pessoas.png" alt="Pessoas apoiando a Frente Negra Brasileira pro Joaquim Barbosa" />
+        </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
+      </section>
+
+      <section class="political-base" id="base-politica">
+        <div class="base-intro" data-reveal>
+          <div class="section-label">Documentos de base</div>
+          <h2>Uma candidatura popular sustentada por apoio coletivo.</h2>
+          <p>
+            Os textos de referência da Frente Negra Brasileira pró Joaquim Barbosa defendem uma campanha com significado simbólico e prático: ampliar a participação negra nos espaços de poder, fortalecer a democracia e transformar representação em organização política concreta.
+          </p>
+        </div>
+
+        <div class="base-grid">
+          <article class="base-card highlight" data-reveal>
+            <span>01</span>
+            <h3>Frente Negra como legado e atualização</h3>
+            <p>
+              A proposta resgata a memória da Frente Negra Brasileira de 1931, movimento social, cultural, educacional e político que se tornou referência histórica da organização negra no país.
+            </p>
+          </article>
+          <article class="base-card" data-reveal>
+            <span>02</span>
+            <h3>Representatividade com consciência política</h3>
+            <p>
+              Joaquim Barbosa aparece nos documentos como símbolo contemporâneo de ascensão negra, educação, independência institucional e presença em espaços antes fechados à população afro-brasileira.
+            </p>
+          </article>
+          <article class="base-card" data-reveal>
+            <span>03</span>
+            <h3>Financiamento coletivo democrático</h3>
+            <p>
+              A vaquinha eletrônica é apresentada como ferramenta legítima para reduzir dependência de grandes grupos econômicos e permitir que cidadãos comuns sustentem uma candidatura popular.
+            </p>
+          </article>
+          <article class="base-card" data-reveal>
+            <span>04</span>
+            <h3>Ação afirmativa para o século XXI</h3>
+            <p>
+              A frente assume a defesa de políticas afirmativas, rigor técnico, evidências, diversidade de vozes e combate à exclusão social que ainda marca a vida de milhões de afro-brasileiros.
+            </p>
+          </article>
+        </div>
+
+        <div class="base-manifest" data-reveal>
+          <div>
+            <h3>O eixo político dos documentos</h3>
+            <p>
+              A candidatura é tratada como uma oportunidade de pedagogia democrática: mobilizar pessoas, discutir poder, enfrentar desigualdades e mostrar que a democracia não deve ser controlada apenas por elites econômicas ou estruturas partidárias tradicionais.
+            </p>
+          </div>
+          <ul>
+            <li>Organização popular e participação digital.</li>
+            <li>Valorização do trabalho, da educação e da dignidade.</li>
+            <li>Combate ao racismo estrutural e à sub-representação política.</li>
+            <li>Fortalecimento de lideranças negras, jovens, trabalhadores e comunidades periféricas.</li>
+          </ul>
+        </div>
+
+        <div class="base-deep-grid">
+          <article class="base-deep-card" data-reveal>
+            <h3>Democracia financiada por gente comum</h3>
+            <p>
+              Os documentos defendem que o financiamento coletivo eleitoral pode reduzir a dependência de estruturas econômicas concentradas. A contribuição popular permite que pessoas comuns participem da construção material da campanha, não apenas do voto.
+            </p>
+            <p>
+              A vaquinha eletrônica aparece como instrumento de organização: ajuda a financiar comunicação, deslocamento, eventos, produção audiovisual, equipe jurídica, contabilidade e mobilização digital.
+            </p>
+          </article>
+          <article class="base-deep-card" data-reveal>
+            <h3>Educação política e consciência racial</h3>
+            <p>
+              A Frente Negra Brasileira pró Joaquim Barbosa é apresentada como iniciativa pedagógica e social. Seu papel é conscientizar a população negra sobre representatividade, direitos, instituições e participação democrática.
+            </p>
+            <p>
+              A presença negra nos espaços de decisão é tratada como condição para políticas públicas mais conectadas com periferias, juventude, violência racial, desigualdade salarial e exclusão social.
+            </p>
+          </article>
+          <article class="base-deep-card" data-reveal>
+            <h3>Trabalho, dignidade e periferia</h3>
+            <p>
+              O material discute a valorização de trabalhadores que sustentam o Brasil real: motoboys, pedreiros, eletricistas, mecânicos, trabalhadores rurais, pequenos empreendedores e famílias das periferias.
+            </p>
+            <p>
+              A pauta associa desenvolvimento econômico a reconhecimento social, formação profissional, renda, segurança pública cidadã e proteção contra o abandono histórico das comunidades afro-brasileiras.
+            </p>
+          </article>
+          <article class="base-deep-card" data-reveal>
+            <h3>Memória da Frente Negra Brasileira</h3>
+            <p>
+              O resumo histórico recupera a Frente Negra Brasileira como uma das maiores organizações negras do país, nascida em 1931 com atuação social, cultural, educacional e política.
+            </p>
+            <p>
+              Essa memória aparece como base para uma frente atual: alfabetização política, defesa de direitos, orgulho afro-brasileiro e organização comunitária como caminhos para disputar o futuro.
+            </p>
+          </article>
+          <article class="base-deep-card" data-reveal>
+            <h3>Liderança com rigor e instituições</h3>
+            <p>
+              Os textos destacam Joaquim Barbosa como símbolo de ascensão negra em um espaço historicamente fechado. Sua trajetória no Supremo Tribunal Federal é associada à independência, disciplina jurídica e enfrentamento da impunidade.
+            </p>
+            <p>
+              A candidatura é apresentada como uma possibilidade de unir representatividade, preparo técnico, defesa das instituições e combate a práticas políticas marcadas por privilégios.
+            </p>
+          </article>
+          <article class="base-deep-card" data-reveal>
+            <h3>Ação afirmativa e responsabilidade social</h3>
+            <p>
+              O material sobre ação afirmativa defende políticas públicas capazes de enfrentar exclusões históricas sem abandonar eficiência, evidências e responsabilidade com resultados.
+            </p>
+            <p>
+              A pauta conecta igualdade racial, acesso à educação, trabalho digno, saúde pública, periferias e fortalecimento democrático como partes de um mesmo projeto nacional.
+            </p>
+          </article>
+        </div>
+
+        <div class="base-sources" data-reveal aria-label="Documentos usados nesta seção">
+          <span>Resumo.pdf</span>
+          <span>artigo_expandido_joaquim_barbosa.pdf</span>
+          <span>UMA AÇÃO AFIRMATIVA PSD AFRO.pdf</span>
+          <span>Vaquinha eletrônica como instrumento democrático</span>
+        </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
         </div>
       </section>
 
@@ -140,6 +279,48 @@
             <canvas id="support-card" width="1080" height="1350"></canvas>
           </div>
         </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
+      </section>
+
+      <section class="profile-generator" id="foto-perfil">
+        <div class="generator-copy" data-reveal>
+          <div class="section-label">Foto de perfil</div>
+          <h2>Crie seu avatar de apoio.</h2>
+          <p>
+            Envie uma foto e gere uma imagem quadrada com moldura da Frente Negra Brasileira pro Joaquim Barbosa.
+          </p>
+        </div>
+
+        <div class="profile-workspace" data-reveal>
+          <form class="card-form profile-form">
+            <label>
+              <span>Foto</span>
+              <input id="profile-photo" type="file" accept="image/*" />
+            </label>
+            <fieldset>
+              <legend>Moldura</legend>
+              <label class="style-option">
+                <input type="radio" name="profile-style" value="brasil" checked />
+                <span>Brasil</span>
+              </label>
+              <label class="style-option">
+                <input type="radio" name="profile-style" value="noite" />
+                <span>Noite</span>
+              </label>
+            </fieldset>
+            <button class="button primary" id="download-profile" type="button">Baixar foto de perfil</button>
+            <p class="card-hint" id="profile-status" role="status" aria-live="polite">Envie uma foto para personalizar.</p>
+          </form>
+
+          <div class="profile-preview-wrap" aria-label="Prévia da foto de perfil">
+            <canvas id="profile-card" width="1080" height="1080"></canvas>
+          </div>
+        </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
       </section>
 
       <section class="pillars" aria-label="Pilares de campanha">
@@ -158,6 +339,9 @@
           <h3>Economia com chão</h3>
           <p>Crédito, emprego digno, inovação nas periferias e investimento em quem movimenta o país todos os dias.</p>
         </article>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
       </section>
 
       <section class="movement" id="movimento">
@@ -179,11 +363,14 @@
             <p id="map-text">Rede nacional de permanência, mentoria e bolsas para estudantes de baixa renda.</p>
           </div>
         </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
       </section>
 
       <section class="timeline" id="agenda">
         <div class="section-label" data-reveal>Agenda pública</div>
-        <h2 data-reveal>Compromissos que viram presença.</h2>
+        <h2 class="agenda-title" data-reveal>Compromissos que viram presença.</h2>
         <div class="timeline-list">
           <button class="timeline-item active" type="button" data-panel="escuta" data-reveal>
             <span>Escuta</span>
@@ -201,6 +388,9 @@
         <div class="timeline-panel" data-reveal>
           <h3 id="panel-title">Encontros territoriais</h3>
           <p id="panel-text">Rodas de conversa com lideranças comunitárias, professores, empreendedores, artistas e trabalhadores.</p>
+        </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
         </div>
       </section>
 
@@ -235,11 +425,17 @@
             <p class="form-note" role="status" aria-live="polite"></p>
           </form>
         </div>
+        <div class="section-cta" data-reveal>
+          <a class="button primary magnetic pre-campaign-link" href="#">Apoiar pré-campanha</a>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Material conceitual de campanha. Feito para debate cívico, inclusão e participação democrática.</p>
+      <p>
+        Criado por
+        <a href="https://www.behance.net/igorfermon" target="_blank" rel="noreferrer">Igor Monção</a>
+      </p>
       <a href="#inicio">Voltar ao topo</a>
     </footer>
 
